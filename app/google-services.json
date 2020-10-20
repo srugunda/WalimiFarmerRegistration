@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "408145678596",
+    "firebase_url": "https://walimi-farmer-register.firebaseio.com",
+    "project_id": "walimi-farmer-register",
+    "storage_bucket": "walimi-farmer-register.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408145678596:android:4624130cd94f3c9fa30051",
+        "android_client_info": {
+          "package_name": "com.solo.walimifarmerregistration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408145678596-af0sl62q7ss3sl602k16ltlrh7vci6cj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtxJkLsX6U-XKxtIWfboSBDqSmp_cmoKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408145678596-af0sl62q7ss3sl602k16ltlrh7vci6cj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
