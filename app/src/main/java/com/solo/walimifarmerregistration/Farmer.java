@@ -1,5 +1,7 @@
 package com.solo.walimifarmerregistration;
 
+import android.graphics.Bitmap;
+
 public class Farmer {
    private String name;
    private String id;
@@ -7,14 +9,17 @@ public class Farmer {
    private String titleNum;
    private String gps;
    private String description;
+   public Bitmap imageBitmap;
 
-    public Farmer(String name, String id, String address, String titleNum, String gps, String description) {
+
+    public Farmer(String name, String id, String address, String titleNum, String gps, String description, Bitmap bitmap) {
         this.name = name;
         this.id = id;
         this.address = address;
         this.titleNum = titleNum;
         this.gps = gps;
         this.description = description;
+        this.imageBitmap = bitmap;
     }
 
     public String getName() {

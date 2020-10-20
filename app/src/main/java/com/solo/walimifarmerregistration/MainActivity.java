@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
     private ImageView LandImage;
     File photoFile = null;
     String mCurrentPhotoPath;
+    ProgressDialog progressDialog;
+    private Bitmap photoBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,8 +58,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         performInitializations();
-
-
     }
 
     private void performInitializations() {
@@ -69,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
         SaveButton = findViewById(R.id.Farmer_Save_Button);
         LandImage = findViewById(R.id.upload_photo);
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Loading...");
+
         SaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,9 +83,10 @@ public class MainActivity extends AppCompatActivity {
                 String gps = GpsCoordinates.getText().toString();
                 String cropDescription = CropDescription.getText().toString();
 
-                Farmer farmer = new Farmer(farmerName, farmerID, farmerAddress, String.valueOf(titleNum), gps, cropDescription);
+                Farmer farmer = new Farmer(farmerName, farmerID, farmerAddress, String.valueOf(titleNum), gps, cropDescription, photoBitmap);
 
                 saveToDatabase(farmer);
+
             }
         });
 
@@ -165,8 +170,8 @@ public class MainActivity extends AppCompatActivity {
          */
 
         if (requestCode == CAPTURE_IMAGE_REQUEST && resultCode == RESULT_OK) {
-            Bitmap myBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
-            LandImage.setImageBitmap(myBitmap);
+            photoBitmap = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
+            LandImage.setImageBitmap(photoBitmap);
         }
         else
         {
@@ -175,6 +180,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void saveToDatabase(Farmer farmer){
+
+        progressDialog.show();
+
         DatabaseReference rootRef;
         rootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -184,11 +192,13 @@ public class MainActivity extends AppCompatActivity {
              public void onComplete(@NonNull Task<Void> task) {
                  if (task.isSuccessful()){
                      Toast.makeText(MainActivity.this, "Saved to firebase", Toast.LENGTH_SHORT).show();
+                     progressDialog.dismiss();
                  }
                  else{
                      String error = task.getException().toString();
                      Log.d("TAG", "Error: " + error);
                      Toast.makeText(MainActivity.this, "Error occurred", Toast.LENGTH_SHORT).show();
+                     progressDialog.dismiss();
                  }
              }
          });
