@@ -117,23 +117,88 @@
                 android:hint="Land Title Number"
                 android:padding="16dp" />
 
-            <EditText
-                android:id="@+id/gps_coordinates"
+
+
+                <Button
+                    android:id="@+id/get_gps_button1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get GPS coordinates:"
+                    android:textAllCaps="false"
+                    android:minHeight="60dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@id/crop_description" />
+
+
+
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_GPS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/land_title_num"
+                android:orientation="horizontal"
+                android:layout_below="@id/get_gps_button1"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/main_button"
-                android:hint="GPS Coordinates"
-                android:padding="16dp" />
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    android:id="@+id/latitude"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/main_button"
+                    android:padding="16dp" />
+
+                <TextView
+                    android:id="@+id/longitude"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@drawable/main_button"
+                    android:padding="16dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/LinearLayout_GPS_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/LinearLayout_GPS"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Latitude"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Longitude"/>
+
+            </LinearLayout>
 
             <EditText
                 android:id="@+id/crop_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/gps_coordinates"
+                android:layout_below="@id/land_title_num"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginRight="16dp"
@@ -145,10 +210,10 @@
                 android:id="@+id/land_photo_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/crop_description"
+                android:layout_below="@+id/LinearLayout_GPS_text"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="20dp"
-                android:text="Photo of Land"
+                android:text="Capture photo of Land (Tap Image)"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <ImageView
@@ -161,22 +226,12 @@
                 android:layout_below="@id/land_photo_text"/>
 
 
-            <TextView
-                android:id="@+id/click_to_upload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/upload_photo"
-                android:layout_marginLeft="4dp"
-                android:layout_marginTop="16dp"
-                android:text="Click to image to take photo of land"
-                android:layout_centerHorizontal="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
             <Button
                 android:id="@+id/Farmer_Save_Button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/click_to_upload"
+                android:layout_below="@id/upload_photo"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="16dp"

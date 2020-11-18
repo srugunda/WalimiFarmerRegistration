@@ -7,19 +7,31 @@ public class Farmer {
    private String id;
    private String address;
    private String titleNum;
-   private String gps;
+   private String latitude;
+   private String longitude;
    private String description;
    public Bitmap imageBitmap;
 
 
-    public Farmer(String name, String id, String address, String titleNum, String gps, String description, Bitmap bitmap) {
+    public Farmer(String name, String id, String address, String titleNum, String latitude, String longitude, String description, Bitmap bitmap) {
         this.name = name;
         this.id = id;
         this.address = address;
         this.titleNum = titleNum;
-        this.gps = gps;
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.description = description;
         this.imageBitmap = bitmap;
+    }
+
+    public Farmer(String name, String id, String address, String titleNum, String latitude, String longitude, String description) {
+        this.name = name;
+        this.id = id;
+        this.address = address;
+        this.titleNum = titleNum;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.description = description;
     }
 
     public String getName() {
@@ -54,12 +66,20 @@ public class Farmer {
         this.titleNum = titleNum;
     }
 
-    public String getGps() {
-        return gps;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setGps(String gps) {
-        this.gps = gps;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getDescription() {
